@@ -14,7 +14,7 @@ var tables = [
     phone: 2158675309,
     email: "pineapple@gmail.com",
     uniqueID: "Matt Party Dague"
-}
+},
 ];
 
 var waitList = [
@@ -27,7 +27,7 @@ var waitList = [
 ]
 
 app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "view.html"));
+    res.sendFile(path.join(__dirname, "index.html"));
   });
 
 app.get("/api/tables", function(req, res){
@@ -40,14 +40,18 @@ app.get("/api/waitList", function(req, res){
 /////////////////////////////////////////
 
 app.post("/api/tables", function(req, res) {
-
     var newTable = req.body;
-  
     console.log(newTable);
-  
+    if( tables.length < 5 ){
     tables.push(newTable);
-  
     res.json(newTable);
+    alert("You may now be seated!")
+    }
+    else {
+      waitList.push(newTable);
+      res.json(newTable)
+      console.log("Its gonna be a minute...")
+    }
   });
 
 ////////////////////////////////////////////
