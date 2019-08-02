@@ -53,7 +53,7 @@
             </form>
             <br>
             <div class="text-right">
-              <a href="/tables"><button type="submit" class="btn btn-primary btn-md" id="add-btn"><span class="fa fa-fire"></span> Submit</button></a>
+              <a href="/api/tables"><button type="submit" class="btn btn-primary btn-md" id="add-btn"><span class="fa fa-fire"></span> Submit</button></a>
             </div>
           </div>
         </div>
@@ -68,13 +68,13 @@
       event.preventDefault();
       var newReservation = {
         name: $("#name").val().trim(),
-        phone: $("#phone-number").val().trim(),
+        phone: $("#phone").val().trim(),
         email: $("#email").val().trim(),
-        id: $("#unique-id").val().trim()
+        id: $("#uniqueID").val().trim()
       };
 
       // Question: What does this code do??
-      $.post("/api/reservations", newReservation)
+      $.post("/api/tables", newReservation)
         .then(function(data) {
           console.log("add.html", data);
           alert("Adding reservation...");

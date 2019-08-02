@@ -53,7 +53,7 @@ app.post("/api/tables", function(req, res) {
     if( tables.length < 5 ){
     tables.push(newTable);
     res.json(newTable);
-    alert("You may now be seated!")
+    console.log("You may now be seated!")
     }
     else {
       waitList.push(newTable);
