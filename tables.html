@@ -35,31 +35,31 @@
             <div class="card-body">
                 <div class="card">
                     <div class="card-header">
-                        <h3 id="name1"><strong>Reservation 1</strong></h3>
+                        <h3 id="name0"><strong>Reservation 1</strong></h3>
                     </div>
                 </div>
                 <br>
                 <div class="card">
                     <div class="card-header">
-                        <h3 id="name2"><strong>Reservation 2</strong></h3>
+                        <h3 id="name1"><strong>Reservation 2</strong></h3>
                     </div>
                 </div>
                 <br>
                 <div class="card">
                     <div class="card-header">
-                        <h3 id="name3"><strong>Reservation 3</strong></h3>
+                        <h3 id="name2"><strong>Reservation 3</strong></h3>
                     </div>
                 </div>
                 <br>
                 <div class="card">
                     <div class="card-header">
-                        <h3 id="name4"><strong>Reservation 4</strong></h3>
+                        <h3 id="name3"><strong>Reservation 4</strong></h3>
                     </div>
                 </div>
                 <br>
                 <div class="card">
                     <div class="card-header">
-                        <h3 id="name5"><strong>Reservation 5</strong></h3>
+                        <h3 id="name4"><strong>Reservation 5</strong></h3>
                     </div>
                 </div>
             </div>
@@ -73,21 +73,21 @@
                 <tr>
                     <div class="card">
                         <div class="card-header">
-                            <h3><strong>Waitlist 1</strong></h3>
+                            <h3 id="wait0"><strong>Waitlist 1</strong></h3>
                         </div>
                     </div>
                 </tr>
                 <td>
                     <div class="card">
                         <div class="card-header">
-                            <h3><strong>Waitlist 2</strong></h3>
+                            <h3 id="wait1"><strong>Waitlist 2</strong></h3>
                         </div>
                     </div>
                 </td>
                 <td>
                     <div class="card">
                         <div class="card-header">
-                            <h3><strong>Waitlist 3</strong></h3>
+                            <h3 id="wait2"><strong>Waitlist 3</strong></h3>
                         </div>
                     </div>
                 </td>
@@ -95,6 +95,40 @@
         </div>
 
     </div>
+
+    <script type="text/javascript">
+        function display(){
+        
+          $.get("/api/tables/", function(data) {
+            console.log(data);
+            if (data){
+            for ( i = 0 ; i < 5; i++) {
+              $("#name" + i).append("<br>" + data[i].name + "<br>");
+              $("#name" + i).append(data[i].uniqueID);
+            }
+         } 
+          });
+        };
+
+        display();
+
+
+        function displayWait(){
+        
+        $.get("/api/waitlist/", function(data) {
+          console.log(data);
+          if (data){
+          for ( i = 0 ; i < 3; i++) {
+            $("#wait" + i).append("<br>" + data[i].name + "<br>");
+            $("#wait" + i).append(data[i].uniqueID);
+          }
+       } 
+        });
+      };
+
+      displayWait();
+    
+      </script>
 
 </body>
 
